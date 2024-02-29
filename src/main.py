@@ -1,38 +1,12 @@
-
-# 
-# 
-# 
-# 
-# while True:
-#     print('awaiting input')
-#     Kp=float(input('Input a Value for Kp: '))
-#     controller1.set_Kp(Kp)
-# 
-#     for i in range(300):
-#         utime.sleep_ms(10)
-#         controller1.input_obj.read()
-#         meas_output=controller1.input_obj.pos
-#         #print(meas_output)
-#         
-#         
-#         controller1.run(meas_output)
-#         PWM=controller1.PWM
-#         
-#         motor1.set_duty_cycle(PWM)
-#         
-#     controller1.input_obj.zero()
-#     motor1.set_duty_cycle(0)
-#     controller1.step_response()
-
-
 """!
-@file basic_tasks.py
-    This file contains a demonstration program that runs some tasks, an
-    inter-task shared variable, and a queue. The tasks don't really @b do
-    anything; the example just shows how these elements are created and run.
+@file main.py
+    This file contains our main code to test two different motors cooperatively.
+    We used some code from "basic_tasks.py" but modified it to fit our needs.
+    This is the file that is stored on the Nucleo microcontroller.
 
-@author JR Ridgely
+@author JR Ridgely, Abe Muldrow, Lucas Rambo, Peter Tomson
 @date   2021-Dec-15 JRR Created from the remains of previous example
+@date February 29, 2024 
 @copyright (c) 2015-2021 by JR Ridgely and released under the GNU
     Public License, Version 2. 
 """
@@ -125,7 +99,7 @@ def task2_fun(shares):
 
 def task3_fun(shares):
     """!
-    Task that controls the motion of the first motor
+    Task that controls the motion of the second motor
     # Task which puts things into a share and a queue.
     @param shares A list holding the share and queue used by this task
     """

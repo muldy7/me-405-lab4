@@ -1,17 +1,15 @@
 """!
-@file lab3_main.py
+@file lab4_gui.py
 This file contains code to run program on a laptop or desktop which creates a user interface
-that can send a signal to the microcontroller to run a step response. The user will set a given Kp
-value and send that to a microcontroller where a Controller Object will read and interpret the data
-from the motor.
-
-The code used in main.py for our microcontroller can be found in the nucleo_main.py file in our Doxygen and GitHub documentation. 
+that can send a signal to the microcontroller to run a step response. The Kp value will be predetermined
+and used to try different values of Kp to try and find the best for the best step response.
+This is the file that will be connected to the Nucleo microcontroller via micro-usb
 
 This file is uses code from lab0example.py file on on Cantvas and an example found at:
 https://matplotlib.org/stable/gallery/user_interfaces/embedding_in_tk_sgskip.html
 
 @author Abe Muldrow, Lucas Rambo, Peter Tomson
-@date February 22th, 2024, Original program, based on example from above listed sources
+@date February 29th, 2024, Original program, based on example from above listed sources
 """
 
 # imports 
@@ -26,7 +24,6 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
                                                NavigationToolbar2Tk)
     
-
 def step_response(plot_axes, plot_canvas, xlabel, ylabel): #entry):	# give it entry for entry.get()
     """!
     This function retrieves the data from the microcontroller to create the plot of the step response.
@@ -58,15 +55,6 @@ def step_response(plot_axes, plot_canvas, xlabel, ylabel): #entry):	# give it en
     start=0 #boolean to show start of step response data
     enter = 0
     # while cont is true read values from the serial port
-    
-    # using entry.get() will retrieve the current number in the entry box
-    #kp = entry.get()
-#     try:
-#         float(kp)
-#     except ValueError:  # test if the user doesn't enter a valid number
-#         print('Please Enter a Number')
-#         cont = 0
-#         return
     
     # loop to read step response values from the board
     while cont == 1:
@@ -115,8 +103,6 @@ def step_response(plot_axes, plot_canvas, xlabel, ylabel): #entry):	# give it en
     plot_axes.axis([0, 750, 0, 4000])
     plot_canvas.draw()
     
-
-
 def tk_matplot(plot_function, xlabel, ylabel, title):
     """!    
     Create a TK window with one embedded Matplotlib plot.
@@ -168,7 +154,6 @@ def tk_matplot(plot_function, xlabel, ylabel, title):
 
     # This function runs the program until the user decides to quit
     tkinter.mainloop()
-    
     
     
 # This main code is run if this file is the main program but won't run if this

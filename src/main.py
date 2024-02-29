@@ -23,20 +23,11 @@ import utime
 
 def task1_fun(shares):
     """!
-    Task that controls the motion of the first motor
-    # Task which puts things into a share and a queue.
+    Task that controls the motion of the first motor.
     @param shares A list holding the share and queue used by this task
     """
     # Get references to the share and queue which have been passed to this task
     my_share, my_queue = shares
-# 
-#     counter = 0
-#     while True:
-#         my_share.put(counter)
-#         my_queue.put(counter)
-#         counter += 1
-# 
-#         yield 0
     
     state = 0
     
@@ -87,7 +78,7 @@ def task1_fun(shares):
 
 def task2_fun(shares):
     """!
-    Task which takes things out of a queue and share and displays them.
+    Task for testing the use of tasks during set up of our code
     @param shares A tuple of a share and queue from which this task gets data
     """
     # Get references to the share and queue which have been passed to this task
@@ -100,20 +91,10 @@ def task2_fun(shares):
 def task3_fun(shares):
     """!
     Task that controls the motion of the second motor
-    # Task which puts things into a share and a queue.
     @param shares A list holding the share and queue used by this task
     """
     # Get references to the share and queue which have been passed to this task
     my_share, my_queue = shares
-# 
-#     counter = 0
-#     while True:
-#         my_share.put(counter)
-#         my_queue.put(counter)
-#         counter += 1
-# 
-#         yield 0
-    #motor2=MotorDriver('PA10','PB4','PB5',3)
 
     state = 0
     
@@ -151,12 +132,6 @@ def task3_fun(shares):
                     yield
                 yield
         elif state == 3:
-#             controller2.input_obj.zero()
-#             motor2.set_duty_cycle(0)
-            # have to know which motor is printing
-            #print('printing motor1')
-            #controller2.step_response()
-            
             # print the results
             print('start')
             for i in range(len(controller2.pos_output)):
